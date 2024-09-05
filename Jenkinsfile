@@ -3,7 +3,7 @@ pipeline {
 
     docker {
       image 'artemvakhitov/dind:latest'
-      args '-v /root/.ssh:/root/.ssh'
+      args '-v /root/.ssh:/root/.ssh -v /var/run/docker.sock:/var/run/docker.sock'
     }
 
   }
