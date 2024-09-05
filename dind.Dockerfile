@@ -4,4 +4,4 @@ RUN apk update
 
 RUN apk add git openssh-client docker wget
 
-RUN usermod -aG docker root
+RUN addgroup root docker 
