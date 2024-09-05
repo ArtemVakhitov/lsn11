@@ -24,6 +24,7 @@ pipeline {
 
     stage('make docker image') {
       steps {
+        sh 'wget https://github.com/ArtemVakhitov/lsn11/raw/main/Dockerfile'
         sh 'docker login --username artemvakhitov --password $dkrpass'
         sh 'docker build -t lsn11 .'
         sh 'docker tag dind artemvakhitov/lsn11 && docker push artemvakhitov/lsn11'
