@@ -10,7 +10,7 @@ pipeline {
   }
 
   environment {
-        DOCKER_PASSWORD = credentials('dkrpass')
+    DOCKER_PASSWORD = credentials('dkrpass')
   }
 
   stages {
