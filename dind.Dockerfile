@@ -1,9 +1,7 @@
-FROM ubuntu:22.04
+FROM maven:3.9.9-eclipse-temurin-8-alpine
 
-RUN apt-get update
+RUN apk update
 
-RUN apt-get -y install openssh-client git maven docker.io wget
+RUN apk add git openssh-client docker wget
 
 RUN usermod -aG docker root
-
-RUN apt-get clean
