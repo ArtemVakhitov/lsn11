@@ -9,6 +9,10 @@ pipeline {
 
   }
 
+  environment {
+        DOCKER_PASSWORD = credentials('dkrpass')
+  }
+
   stages {
 
     stage('git') {
@@ -25,7 +29,7 @@ pipeline {
 
     stage('make docker image') {
       steps {
-        sh 'docker login --username artemvakhitov --password $dkrpass'
+        sh 'docker login --username artemvakhitov --password $DOCKER_PASSWORD'
         sh 'docker build -t lsn11 -f ../Dockerfile .'
         sh 'docker tag lsn11 artemvakhitov/lsn11 && docker push artemvakhitov/lsn11'
 
