@@ -38,4 +38,5 @@ pipeline {
         sh 'ssh $prod docker run -d -p 8080:8080 artemvakhitov/lsn11'
       }
     }
+  }
 }
