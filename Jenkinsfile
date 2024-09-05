@@ -3,7 +3,7 @@ pipeline {
   agent {
 
     docker {
-      image 'artemvakhitov/dind:latest'
+      image 'artemvakhitov/dind:ubuntu'
       args '-v /root/.ssh:/root/.ssh -v /var/run/docker.sock:/var/run/docker.sock'
     }
 
