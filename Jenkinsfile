@@ -11,7 +11,7 @@ pipeline {
 
   environment {
     DOCKER_PASSWORD = credentials('dkrpass')
-    BRANCH_NAME = ${env.GIT_BRANCH}
+    BRANCH_NAME = "${env.GIT_BRANCH}"
   }
 
   stages {
