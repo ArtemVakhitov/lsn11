@@ -11,6 +11,7 @@ pipeline {
 
   environment {
     DOCKER_PASSWORD = credentials('dkrpass')
+    BRANCH_NAME = ${env.GIT_BRANCH}
   }
 
   stages {
@@ -29,7 +30,7 @@ pipeline {
 
     stage('make docker image') {
       steps {
-        sh 'wget https://github.com/ArtemVakhitov/lsn11/blob/${env.GIT_BRANCH}/Dockerfile'
+        sh 'wget https://github.com/ArtemVakhitov/lsn11/blob/$BRANCH_NAME/Dockerfile'
         sh 'docker login --username artemvakhitov --password $DOCKER_PASSWORD'
         sh 'docker build -t lsn11 .'
         sh 'docker tag lsn11 artemvakhitov/lsn11 && docker push artemvakhitov/lsn11'
