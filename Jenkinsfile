@@ -31,7 +31,7 @@ pipeline {
     stage('make docker image') {
       steps {
         sh 'echo Debug: the branch name is $BRANCH_NAME'
-        sh 'wget https://github.com/ArtemVakhitov/lsn11/blob/$BRANCH_NAME/Dockerfile'
+        sh 'wget https://raw.githubusercontent.com/artemvakhitov/lsn11/$BRANCH_NAME/Dockerfile'
         sh 'docker login --username artemvakhitov --password $DOCKER_PASSWORD'
         sh 'docker build -t lsn11 .'
         sh 'docker tag lsn11 artemvakhitov/lsn11 && docker push artemvakhitov/lsn11'
