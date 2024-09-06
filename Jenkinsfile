@@ -42,7 +42,7 @@ pipeline {
       steps {
         sh 'ssh-keyscan -H $prod >> ~/.ssh/known_hosts'
         sh '''ssh $prod <<-EOF
-								docker kill $(docker ps -q) || true
+								{ docker ps -q | xargs docker stop; } || true
 								docker run -d -p 8080:8080 artemvakhitov/lsn11
 EOF'''
       }
