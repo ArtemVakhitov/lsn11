@@ -41,7 +41,10 @@ pipeline {
     stage('run docker on prod') {
       steps {
         sh 'ssh-keyscan -H $prod >> ~/.ssh/known_hosts'
-        sh 'ssh $prod docker kill $(docker ps -q) && docker run -d -p 8080:8080 artemvakhitov/lsn11'
+        sh '''ssh $prod <<-EOF
+								docker kill $(docker ps -q) || true
+								docker run -d -p 8080:8080 artemvakhitov/lsn11
+EOF'''
       }
     }
   }
